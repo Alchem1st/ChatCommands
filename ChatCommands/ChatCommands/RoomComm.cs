@@ -22,6 +22,16 @@ namespace ChatCommands
 
 				return true;
 			}
+			else if (rcmm.text.startsWith("/part"))
+			{
+				String splitted = rcmm.text.Split(" ");
+
+				if (splitted.Length == 2)
+				{
+					String roomToPart = splitted[1];
+					App.ArenaChat.chatRooms.LeaveRoom(roomToPart);
+				}
+			}
 			return false;
 		}
 
