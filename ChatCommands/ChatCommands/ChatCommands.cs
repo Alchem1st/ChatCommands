@@ -12,11 +12,8 @@ namespace ChatCommands
 	{
 		private List<ChatComm> commands = new List<ChatComm>();
 
-		public static StreamWriter sw;
-
 		public ChatCommands()
 		{
-			Console.WriteLine("ChatCommands constructor");
 
 			commands.Add(new Ignore());
 			commands.Add(new RoomComm());
@@ -34,24 +31,22 @@ namespace ChatCommands
 
 		public static MethodDefinition[] GetHooks(TypeDefinitionCollection scrollsTypes, int version)
 		{
-			Console.WriteLine("Getting hooks for ChatCommands");
 			return new MethodDefinition[] {
 					scrollsTypes["ChatRooms"].Methods.GetMethod("ChatMessage", new Type[]{typeof(RoomChatMessageMessage)}),
-					scrollsTypes["Communicator"].Methods.GetMethod("sendRequest", new Type[]{typeof(Message)})};
+					scrollsTypes["Communicator"].Methods.GetMethod("sendRequest", new Type[]{typeof(Message)})
+			};
 		}
 
 		public override bool BeforeInvoke(InvocationInfo info, out object returnValue)
 		{
 			returnValue = null;
 
-			Console.WriteLine("BeforeInvoke ChatCommands");
-
 			if (info.targetMethod.Equals("ChatMessage")) // ChatMessage (received) in ChatRooms
 			{
 				RoomChatMessageMessage rcmm = (RoomChatMessageMessage)info.arguments[0];
 
 				return hooks(false, rcmm);
-			} 
+			}
 			else if (info.targetMethod.Equals("sendRequest"))
 			{
 				if (info.arguments[0] is RoomChatMessageMessage)
@@ -61,7 +56,6 @@ namespace ChatCommands
 					return hooks(true, rcmm);
 				}
 			}
-
 			return false;
 		}
 

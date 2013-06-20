@@ -7,7 +7,7 @@ namespace ChatCommands
 {
 	class RoomComm : ChatComm
 	{
-		public bool hooksSend(RoomChatMessageMessage rcmm)
+		public override bool hooksSend(RoomChatMessageMessage rcmm)
 		{
 			if (rcmm.text.StartsWith("/join"))
 			{
@@ -25,18 +25,18 @@ namespace ChatCommands
 			{
 				String[] splitted = rcmm.text.Split(' ');
 
-				if (splitted.Length == 2)
+				if (splitted.Length == 1) // leave current room
+				{
+					App.ArenaChat.ChatRooms.LeaveRoom(App.ArenaChat.ChatRooms.GetCurrentRoom());
+				}
+				else if (splitted.Length == 2)
 				{
 					String roomToPart = splitted[1];
 					App.ArenaChat.ChatRooms.LeaveRoom(roomToPart);
 				}
-			}
-			return false;
-		}
 
-		// nothing to do here
-		public bool hooksReceive(RoomChatMessageMessage rcmm)
-		{
+				return true;
+			}
 			return false;
 		}
 	}
