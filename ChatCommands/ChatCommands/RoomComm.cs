@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatCommands
 {
@@ -10,9 +9,9 @@ namespace ChatCommands
 	{
 		public bool hooksSend(RoomChatMessageMessage rcmm)
 		{
-			if (rcmm.text.startsWith("/join"))
+			if (rcmm.text.StartsWith("/join"))
 			{
-				String splitted = rcmm.text.Split(" ");
+				String[] splitted = rcmm.text.Split(' ');
 
 				if (splitted.Length == 2)
 				{
@@ -22,14 +21,14 @@ namespace ChatCommands
 
 				return true;
 			}
-			else if (rcmm.text.startsWith("/part"))
+			else if (rcmm.text.StartsWith("/part"))
 			{
-				String splitted = rcmm.text.Split(" ");
+				String[] splitted = rcmm.text.Split(' ');
 
 				if (splitted.Length == 2)
 				{
 					String roomToPart = splitted[1];
-					App.ArenaChat.chatRooms.LeaveRoom(roomToPart);
+					App.ArenaChat.ChatRooms.LeaveRoom(roomToPart);
 				}
 			}
 			return false;

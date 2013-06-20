@@ -1,22 +1,28 @@
-﻿using System;
+﻿using Mono.Cecil;
+using ScrollsModLoader.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatCommands
 {
-    public class ChatCommands : BaseMod
-    {
+	public class ChatCommands : BaseMod
+	{
 		private List<ChatComm> commands = new List<ChatComm>();
+
+		public static StreamWriter sw;
 
 		public ChatCommands()
 		{
+			Console.WriteLine("ChatCommands constructor");
+
 			commands.Add(new Ignore());
 			commands.Add(new RoomComm());
 		}
 
-		public static String GetName()
+		public static string GetName()
 		{
 			return "ChatCommands";
 		}
@@ -28,6 +34,7 @@ namespace ChatCommands
 
 		public static MethodDefinition[] GetHooks(TypeDefinitionCollection scrollsTypes, int version)
 		{
+			Console.WriteLine("Getting hooks for ChatCommands");
 			return new MethodDefinition[] {
 					scrollsTypes["ChatRooms"].Methods.GetMethod("ChatMessage", new Type[]{typeof(RoomChatMessageMessage)}),
 					scrollsTypes["Communicator"].Methods.GetMethod("sendRequest", new Type[]{typeof(Message)})};
@@ -36,6 +43,8 @@ namespace ChatCommands
 		public override bool BeforeInvoke(InvocationInfo info, out object returnValue)
 		{
 			returnValue = null;
+
+			Console.WriteLine("BeforeInvoke ChatCommands");
 
 			if (info.targetMethod.Equals("ChatMessage")) // ChatMessage (received) in ChatRooms
 			{
@@ -52,7 +61,13 @@ namespace ChatCommands
 					return hooks(true, rcmm);
 				}
 			}
+
 			return false;
+		}
+
+		public override void AfterInvoke(InvocationInfo info, ref object returnValue)
+		{
+			return;
 		}
 
 		/**
@@ -69,5 +84,5 @@ namespace ChatCommands
 			}
 			return h;
 		}
-    }
+	}
 }

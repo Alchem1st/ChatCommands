@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatCommands
 {
@@ -13,11 +12,14 @@ namespace ChatCommands
 
 		public bool hooksSend(RoomChatMessageMessage rcmm)
 		{
+
+			Console.WriteLine("got hooksSend Ignore: " + rcmm.text + "    " + rcmm.getRawText());
+
 			// heh heh, allow mods to still use /mute
-			if (rcmm.text.startsWith("/ignore") || (rcmm.text.startsWith("/mute") && App.MyProfile.ProfileInfo.adminRole == AdminRole.None))
+			if (rcmm.text.StartsWith("/ignore") || (rcmm.text.StartsWith("/mute") && App.MyProfile.ProfileInfo.adminRole == AdminRole.None))
 			{
 				// get username from text
-				String[] splitted = rcmm.text.Split(" ");
+				String[] splitted = rcmm.text.Split(' ');
 
 				if (splitted.Length == 2)
 				{
@@ -29,10 +31,10 @@ namespace ChatCommands
 				}
 				return true;
 			}
-			else if (rcmm.text.startsWith("/unignore") || (rcmm.text.startsWith("/unmute") && App.MyProfile.ProfileInfo.adminRole == AdminRole.None))
+			else if (rcmm.text.StartsWith("/unignore") || (rcmm.text.StartsWith("/unmute") && App.MyProfile.ProfileInfo.adminRole == AdminRole.None))
 			{
 				// get username from text
-				String[] splitted = rcmm.text.Split(" ");
+				String[] splitted = rcmm.text.Split(' ');
 
 				if (splitted.Length == 2)
 				{
