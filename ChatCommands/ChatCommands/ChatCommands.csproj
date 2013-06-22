@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,14 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\Assemblies\Assembly-CSharp.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\..\Assemblies\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="ScrollsModLoader.Interfaces">
-      <HintPath>..\..\..\Assemblies\ScrollsModLoader.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\Template.mod\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,8 +42,14 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\Template.mod\Assembly-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Assemblies\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\Template.mod\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrollsModLoader.Interfaces">
+      <HintPath>..\..\..\ScrollsModLoader\ScrollsModLoader.Interfaces\bin\Debug\ScrollsModLoader.Interfaces.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +58,8 @@
     <Compile Include="Ignore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomComm.cs" />
+    <Compile Include="Quit.cs" />
+    <Compile Include="SetResolution.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
