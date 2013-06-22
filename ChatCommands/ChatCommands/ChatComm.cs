@@ -29,6 +29,8 @@ namespace ChatCommands
 			rcmm.from = "ChatCommands";
 			rcmm.text = "<color=#aa803f>" + txt + "</color>";
 			rcmm.roomName = App.ArenaChat.ChatRooms.GetCurrentRoom();
+
+			App.ChatUI.handleMessage(rcmm);
 			App.ArenaChat.ChatRooms.ChatMessage(rcmm);
 		}
 	}
