@@ -18,6 +18,11 @@ namespace ChatCommands
 			return false;
 		}
 
+		public virtual string help()
+		{
+			return "";
+		}
+
 		protected void msg(String txt)
 		{
 			RoomChatMessageMessage rcmm = new RoomChatMessageMessage();
