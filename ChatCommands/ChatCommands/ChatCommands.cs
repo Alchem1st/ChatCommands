@@ -31,6 +31,8 @@ namespace ChatCommands
 
 		public static MethodDefinition[] GetHooks(TypeDefinitionCollection scrollsTypes, int version)
 		{
+			if (version != 94)
+				return new MethodDefinition[] { };
 			return new MethodDefinition[] {
 					scrollsTypes["ChatRooms"].Methods.GetMethod("ChatMessage", new Type[]{typeof(RoomChatMessageMessage)}),
 					scrollsTypes["Communicator"].Methods.GetMethod("sendRequest", new Type[]{typeof(Message)})
