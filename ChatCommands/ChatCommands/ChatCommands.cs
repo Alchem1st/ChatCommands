@@ -17,6 +17,7 @@ namespace ChatCommands
 
 			commands.Add(new Ignore());
 			commands.Add(new RoomComm());
+			commands.Add(new Quit());
 		}
 
 		public static string GetName()
@@ -31,10 +32,14 @@ namespace ChatCommands
 
 		public static MethodDefinition[] GetHooks(TypeDefinitionCollection scrollsTypes, int version)
 		{
-			return new MethodDefinition[] {
+			try {
+				return new MethodDefinition[] {
 					scrollsTypes["ChatRooms"].Methods.GetMethod("ChatMessage", new Type[]{typeof(RoomChatMessageMessage)}),
 					scrollsTypes["Communicator"].Methods.GetMethod("sendRequest", new Type[]{typeof(Message)})
-			};
+				};
+			} catch {
+				return new MethodDefinition[] { };
+			}
 		}
 
 		public override bool BeforeInvoke(InvocationInfo info, out object returnValue)
