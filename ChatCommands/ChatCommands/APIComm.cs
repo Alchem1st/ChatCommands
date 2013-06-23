@@ -15,7 +15,7 @@ namespace ChatCommands
 			{
 				String[] splitted = rcmm.text.Split(' ');
 
-				if (splitted.Length == 2)
+				if (splitted.Length >= 2)
 				{
 					String playerName = splitted[1];
 					loadPlayerInfo(playerName);
@@ -28,7 +28,8 @@ namespace ChatCommands
 
 		private void loadPlayerInfo(String playerName)
 		{
-			WebClient wc = new WebClient();
+			WebClientTimeOut wc = new WebClientTimeOut();
+			wc.TimeOut = 5000;
 			wc.DownloadStringCompleted += (sender, e) =>
 				{
 					proc(e.Result, playerName);

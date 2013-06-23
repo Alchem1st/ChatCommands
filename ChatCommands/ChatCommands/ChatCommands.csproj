@@ -66,6 +66,7 @@
     <Compile Include="RoomComm.cs" />
     <Compile Include="Quit.cs" />
     <Compile Include="SetResolution.cs" />
+    <Compile Include="WebClientTimeOut.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

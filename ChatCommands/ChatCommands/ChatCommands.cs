@@ -14,10 +14,11 @@ namespace ChatCommands
 
 		public ChatCommands()
 		{
+			commands.Add(new APIComm());
 			commands.Add(new Ignore());
 			commands.Add(new RoomComm());
 			commands.Add(new Quit());
-			commands.Add(new APIComm());
+			commands.Add(new SetResolution());
 		}
 
 		public static string GetName()

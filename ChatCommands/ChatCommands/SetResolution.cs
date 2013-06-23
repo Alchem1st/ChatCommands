@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using UnityEngine;
 
 namespace ChatCommands
@@ -46,6 +47,7 @@ namespace ChatCommands
 				}
 
 				App.Config.SetResolution(width, height, fullscreen);
+				return true;
 			}
 			return false;
 		}
