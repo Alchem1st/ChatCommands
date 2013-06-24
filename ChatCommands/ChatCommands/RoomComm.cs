@@ -9,9 +9,10 @@ namespace ChatCommands
 	{
 		public override bool hooksSend(RoomChatMessageMessage rcmm)
 		{
-			if (rcmm.text.StartsWith("/join"))
+			String[] splitted = rcmm.text.Split(' ');
+
+			if (splitted[0] == "/join" | splitted[0] == "/j")
 			{
-				String[] splitted = rcmm.text.Split(' ');
 
 				if (splitted.Length == 2)
 				{
@@ -21,9 +22,8 @@ namespace ChatCommands
 
 				return true;
 			}
-			else if (rcmm.text.StartsWith("/part"))
+			else if (splitted[0] == "/part")
 			{
-				String[] splitted = rcmm.text.Split(' ');
 
 				if (splitted.Length == 1) // leave current room
 				{
