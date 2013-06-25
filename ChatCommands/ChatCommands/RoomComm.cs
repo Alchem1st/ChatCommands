@@ -11,7 +11,7 @@ namespace ChatCommands
 		{
 			String[] splitted = rcmm.text.Split(' ');
 
-			if (splitted[0] == "/join" | splitted[0] == "/j")
+			if (splitted[0].Equals("/join") || splitted[0].Equals("/j"))
 			{
 
 				if (splitted.Length == 2)
@@ -22,7 +22,7 @@ namespace ChatCommands
 
 				return true;
 			}
-			else if (splitted[0] == "/part")
+			else if (splitted[0].Equals("/part"))
 			{
 
 				if (splitted.Length == 1) // leave current room

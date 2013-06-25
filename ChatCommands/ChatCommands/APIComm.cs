@@ -11,10 +11,9 @@ namespace ChatCommands
 	{
 		public override bool hooksSend(RoomChatMessageMessage rcmm)
 		{
-			if (rcmm.text.StartsWith("/player"))
+			String[] splitted = rcmm.text.Split(' ');
+			if (splitted[0].Equals("/player"))
 			{
-				String[] splitted = rcmm.text.Split(' ');
-
 				if (splitted.Length >= 2)
 				{
 					String playerName = splitted[1];
