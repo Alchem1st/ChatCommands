@@ -7,13 +7,14 @@ namespace ChatCommands
 {
 	class RoomComm : ChatComm
 	{
+        public const string joinformat = "/join [room] OR /j [room]";
+        public const string partformat = "/part";
 		public override bool hooksSend(RoomChatMessageMessage rcmm)
 		{
 			String[] splitted = rcmm.text.Split(' ');
 
 			if (splitted[0].Equals("/join") || splitted[0].Equals("/j"))
 			{
-
 				if (splitted.Length == 2)
 				{
 					String roomToJoin = splitted[1];

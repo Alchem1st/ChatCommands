@@ -7,7 +7,7 @@ namespace ChatCommands
 {
     class Trade : ChatComm
     {
-        private const string format = "Expected: /trade [tradePartner] OR /t [tradePartner";
+        public const string format = "/trade [tradePartner] OR /t [tradePartner]";
 
         public override bool hooksSend(RoomChatMessageMessage rcmm)
         {            
@@ -42,7 +42,7 @@ namespace ChatCommands
                 }
                 else
                 {
-                    msg("Unexpected arguments:  " + format);
+                    msg("Unexpected arguments:  Expected:" + format);
                 }
 
 				return true;
