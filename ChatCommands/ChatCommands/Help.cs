@@ -12,7 +12,7 @@ namespace ChatCommands
             if (rcmm.text.ToLower().Equals("/help") || rcmm.text.ToLower().StartsWith("/help "))
             {
                 string[] splitted = rcmm.text.Split(' ');
-                //Used to determine whether the right help message could be played, if not, plays the default
+                //Used to determine whether the right help message could be shown, if not, shows the default
                 bool helped = false;
                 //Checks if they typed a command after /help
                 if (splitted.Length == 2)
@@ -53,12 +53,18 @@ namespace ChatCommands
                             helped = true;
                             break;
                         case "part":
-                            msg("The part command leaves the current chatroom.");
+                            msg("The part command leaves the chatroom specified, or the current chatroom by default.");
                             msg(string.Concat("Usage: ", RoomComm.partformat));
                             helped = true;
                             break;
+                        case "player":
+                            msg("The player command retrieves the ranked stats of a player from scrollsguide.com.");
+                            msg(string.Concat("Usage: ", Player.format));
+                            helped = true;
+                            break;
                         case "help":
-                            msg("Really? You need help using the help command?");
+                            msg("Really? You need help using the help command? :)");
+                            helped = true;
                             break;
                         default:
                             msg(string.Format("Command {0} not recognized, showing default help message.",splitted[1].ToLower()));

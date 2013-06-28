@@ -14,9 +14,9 @@ namespace ChatCommands
 
 		public ChatCommands()
 		{
-			commands.Add(new APIComm());
+            commands.Add(new Player());
 			commands.Add(new Ignore());
-			commands.Add(new RoomComm());
+			//commands.Add(new RoomComm());
 			commands.Add(new Quit());
 			commands.Add(new SetResolution());
             commands.Add(new Trade());
