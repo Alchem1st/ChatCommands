@@ -80,7 +80,7 @@ namespace ChatCommands
                     }
                     msg(string.Concat("ChatCommands Version: ", Convert.ToString(ChatCommands.GetVersion())));
                     msg("For more information on a specific command, type /help [command]");
-                    msg("Commands: exit, help, ignore, ignorelist, j, join, part, player, quit, setres, t, trade, unignore");
+                    msg("Commands: exit, help, ignore, ignorelist, j, join, part, player, quit, setRes, t, trade, unignore");
                 }
                 return true;
             }
