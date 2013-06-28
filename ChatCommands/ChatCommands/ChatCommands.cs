@@ -14,11 +14,13 @@ namespace ChatCommands
 
 		public ChatCommands()
 		{
-			commands.Add(new APIComm());
+            commands.Add(new Player());
 			commands.Add(new Ignore());
-			commands.Add(new RoomComm());
+			//commands.Add(new RoomComm());
 			commands.Add(new Quit());
 			commands.Add(new SetResolution());
+            commands.Add(new Trade());
+            commands.Add(new Help());
 		}
 
 		public static string GetName()
@@ -28,7 +30,7 @@ namespace ChatCommands
 
 		public static int GetVersion()
 		{
-			return 2;
+			return 3;
 		}
 
 		public static MethodDefinition[] GetHooks(TypeDefinitionCollection scrollsTypes, int version)

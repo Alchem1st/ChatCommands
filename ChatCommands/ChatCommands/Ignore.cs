@@ -7,6 +7,7 @@ namespace ChatCommands
 {
 	class Ignore : ChatComm
 	{
+        public const string format = "/ignore [Player]\n/unignore [Player]\n/ignorelist";
 		// list of usernames that are ignored/muted
 		private List<String> ignoring = new List<String>();
 

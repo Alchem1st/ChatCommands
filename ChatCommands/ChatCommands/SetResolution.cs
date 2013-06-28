@@ -6,7 +6,7 @@ namespace ChatCommands
 {
 	class SetResolution : ChatComm
 	{
-		private const string format = "Expected: /setRes [width] [height] (optional:[fullscreen] as ('True'/'False'))";
+		public const string format = "/setRes [width] [height] (optional:[fullscreen] as ('True'/'False'))";
 
 		public override bool hooksSend(RoomChatMessageMessage rcmm)
 		{
@@ -41,7 +41,7 @@ namespace ChatCommands
 					}
 					catch
 					{
-						msg("Malformed arguments. " + format);
+                        msg("Malformed arguments. Expected: " + format);
 						return true;
 					}
 				}
