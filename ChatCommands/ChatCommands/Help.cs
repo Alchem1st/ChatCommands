@@ -9,7 +9,7 @@ namespace ChatCommands
     {
         public override bool hooksSend(RoomChatMessageMessage rcmm)
         {
-            if (rcmm.text.ToLower().Equals("/help") || rcmm.text.ToLower().StartsWith("/help "))
+            if (App.MyProfile.ProfileInfo.adminRole == AdminRole.None && (rcmm.text.ToLower().Equals("/help") || rcmm.text.ToLower().StartsWith("/help ")))
             {
                 string[] splitted = rcmm.text.Split(' ');
                 //Used to determine whether the right help message could be shown, if not, shows the default
@@ -42,7 +42,7 @@ namespace ChatCommands
                             helped = true;
                             break;
                         case "setres":
-                            msg("The setres command sets the resolution of the game as long as it is a valid resolution.");
+                            msg("The setRes command sets the resolution of the game as long as it is a valid resolution.");
                             msg(string.Concat("Usage: ", SetResolution.format));
                             helped = true;
                             break;

@@ -11,7 +11,7 @@ namespace ChatCommands
 
         public override bool hooksSend(RoomChatMessageMessage rcmm)
         {            
-			if (rcmm.text.ToLower().StartsWith("/trade") | rcmm.text.ToLower().StartsWith("/t"))
+			if (rcmm.text.ToLower().StartsWith("/trade") || rcmm.text.ToLower().StartsWith("/t"))
 			{
                 String[] splitted = rcmm.text.Split(' ');
                 // Second clause below handles use of Tab on partial names to auto-complete (leaves a trailing space)
