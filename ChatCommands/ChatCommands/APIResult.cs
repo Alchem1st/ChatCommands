@@ -11,7 +11,9 @@ public class APIResult
 
 public class DataDeserialiser
 {
-	public String rating;
-	public String rank;
+	public int rating;
+	public int rank;
+	public int gold;
+	public int scrolls;
 	public String name;
 }
